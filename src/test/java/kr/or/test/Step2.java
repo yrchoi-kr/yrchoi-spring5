@@ -53,6 +53,7 @@ public class Step2 {
 		//출력도 메서드를 바로 호출하지 않고, 외부 클래스에서 객체로 만들어서 메서드를 호출합니다.
 		MemberService memberService = new MemberService();
 		memberService.printMember(members);
+		memberService = null;
 	}
 
 }
