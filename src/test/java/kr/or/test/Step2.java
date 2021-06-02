@@ -5,7 +5,10 @@ class MemberVO{
 	private String name;
 	private int age;
 	private String PhoneNum;
+	
 	//위 프라이빗 멤버변수를 입출력 구현 메서드를 만듭니다.
+	
+	
 	public String getName() {
 		return name;
 	}
@@ -24,7 +27,10 @@ class MemberVO{
 	public void setPhoneNum(String PhoneNum) {
 		this.PhoneNum = PhoneNum;
 	}
-	
+	@Override
+	public String toString() {
+		return "MemberVO 내용 출력하기 [name=" + name + ", age=" + age + ", PhoneNum=" + PhoneNum + "]";
+	}
 }
 public class Step2 {
 	/**
