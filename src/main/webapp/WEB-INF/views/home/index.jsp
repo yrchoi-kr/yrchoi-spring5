@@ -7,67 +7,67 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!-- 제이쿼리 코어 임포트(아래) -->
+<!-- 제이쿼리 코어 임포트 가져오기(아래) -->
 <script src="/resources/home/js/jquery-3.6.0.js"></script>
-<!-- 상단 바로가기 링크시 부드럽게 상단으로 이동 하는 js import(아래) -->
+<!-- 상단바로가기 클릭시 부드럽게 이동하는 외부 라이브러리 JS 임포트(아래) -->
 <script src="/resources/home/js/jquery.smooth-scroll.min.js"></script>
-<!-- 화면 초기화 시키는 reset style import :크로스브라우징 처리하기위해서-->
-<!-- 크롬, IE, 엣지, Safari, firefox의 h1, p, ul, div 태그의 크기가 조금씩 다름 -->
-<!-- 작업한 결과가 모든 브라우저(크로싱 브라우저)에 똑같이 보이게 하기 위한 절차가 reset.css(아래 작업내용) -->
+<!-- 화면을 초기화 시키는 reset 스타일 임포트:크로스브라이징 처리하기위해서 -->
+<!-- 크롬, IE, 엣지, 사파리, 파이어폭스 h1, p, ul, div 태그의 크기가 조금씩 틀림니다. -->
+<!-- 작업한 결과가 모든 브라우져(크로싱브라우징)에 똑같이 보이게 하기 위한 reset.css(아래) -->
 <link rel="stylesheet" href="/resources/home/css/reset.css">
+<!-- 여기서 부터 사용자 정의형 스타일 + 스크립트 추가(아래) -->
 <link rel="stylesheet" href="/resources/home/css/mobile.css">
-<!-- 태블릿용 CSS 임포트 -->
+<!-- 테블릿용 CSS 임포트 -->
 <link rel="stylesheet" href="/resources/home/css/tablet.css">
 <!-- PC용 CSS 임포트 -->
 <link rel="stylesheet" href="/resources/home/css/pc.css">
-<script src='/resources/home/js/main.js'></script>
-<!-- 메인 슬라이드 코어 임포트 -->
+<script src="/resources/home/js/main.js"></script>
+<!-- 메인슬라이드 코어 임포트 -->
 <script src="/resources/home/js/slidemain.js"></script>
 <style>
-/* 태블릿용 메인페이지 스타일 지정(아래) */
-@media all and (min-width:801px){
+/* 테블릿용 메인페이지 스타일 지정(아래) 801px~무한대까지 재정의 */
+@media all and (min-width:801px) {
 	
 }
-/* PC용 메인 페이지 스타일 지정 */
-@media all and (min-width:1066px){
-		
+/* PC용 메인페이지 스타일 지정 1066px~무한대까지 재정의 */
+@media all and (min-width:1066px) {
+	
 }
-
 </style>
 <script>
-//메인페이지 전용 슬라이드 호출 부분
+// 메인페이지 전용 슬라이드 호출 부분
 $(document).ready(function() {
-// 위에서 선언한 함수|변수 사용 
-// 여기서 함수 호출 (실행)
-slideAuto = setTimeout('play_w("right")',3000); //3초 후에 play_w함수 실행
-var slidePlayHide = setTimeout(function(){
-    $('.rollplay').css("display",'none');
-},3000); //3초후에 rollplay클래스 영역을 숨김
-// 개의 슬라이드 버튼 클릭 액션 처리
-$('.rollstop a').click(function(){
-    // this는 클릭한 본인 태그를 말합니다.
-    $(this).parent().hide(); //현재 stop버튼 숨김.
-    $('.rollplay').css('display','inline-block');
-    if(slideAuto) {
-        clearTimeout(slideAuto); //slideAuto 변수가 없다면, play_w함수를 실행 중지.
-    }
-});
-$('.rollplay a').click(function(){
-    $(this).parent().hide();
-    $('.rollstop').css('display','inline-block');
-    play_w('right'); //3초마다 슬라이드 이미지 액션을 발생합니다.
-});
-$('.rollingbtn li.seq a').each(function(index){
-    $(this).click(function(){
-        $('.rollplay').hide();
-        $('.rollstop').css('display','inline-block');
-        if(slideAuto) {
-            clearTimeout(slideAuto); //슬라이드 중지
-        }
-        play_w(index); //슬라이드 재생 : 단 시작위치는 클릭한 index부터 무한 반복
-    });
-});
+	// 위에서 선언한 함수|변수 사용(아래)
+	//여기서 함수호출(실행)
+	slideAuto = setTimeout('play_w("right")', 3000);//3초마다 play_w함수 실행
+	var slidePlayHide = setTimeout(function(){
+		$('.rollplay').css('display','none');
+	},3000);//3초 후에 rollplay클래스 플레이버튼 영역을 숨김
+	// 3개의 슬라이드 버튼 클랙 액션처리
+	$('.rollstop a').click(function(){
+		// this는 클릭한 본인 태그를 말합니다.
+		$(this).parent().hide();//현재 stop버튼 숨김.
+		$('.rollplay').css('display','inline-block');
+		if(slideAuto) {
+			clearTimeout(slideAuto);//slideAuto변수가 없다면, play_w함수를 실행 중지.
+		}
+	});
+	$('.rollplay a').click(function(){
+		$(this).parent().hide();// a태그의 부모 rollplay영역 입니다.
+		$('.rollstop').css('display','inline-block');
+		play_w('right');//3초마다 슬라이드 이미지 액션일 발생합니다.
 
+	});
+	$('.rollingbtn li.seq a').each(function(index){
+		$(this).click(function(){
+			$('.rollplay').hide();
+			$('.rollstop').css('display','inline-block');
+			if(slideAuto) {
+				clearTimeout(slideAuto);//슬라이드 중지
+			}
+			play_w(index);//슬라이드 재생 : 단 시작위치는 클릭한 index부터 무한반복
+		});
+	});
 });
 </script>
 </head>
@@ -83,12 +83,11 @@ $('.rollingbtn li.seq a').each(function(index){
 			
 			<!-- 상단메뉴메뉴영역 -->
 			<p class="openMOgnb">
-                <a href="#">
-                    <b class="hdd">메뉴열기</b> 
-                <span></span><span></span><span></span> 
-                <!-- span 3개는 햄버거로 변함 -->
-                </a>
-            </p>
+				<a href="#">
+					<b class="hdd">메뉴열기</b> 
+					<span></span><span></span><span></span>
+				</a>
+			</p>
 			<div class="header_cont">
 				<ul class="util clear">
 					<li><a href="login.html">로그인</a></li>
@@ -158,6 +157,7 @@ $('.rollingbtn li.seq a').each(function(index){
                 <!-- 슬라이드버튼영역 -->
                 <div class="rollbtnArea">
                     <ul class="rollingbtn">
+						<!-- butt0 a img -->
                         <li class="seq butt0"><a href="#butt"><img src="/resources/home/img/btn_rollbutt_on.png" alt="1번" /></a></li>
                         <li class="seq butt1"><a href="#butt"><img src="/resources/home/img/btn_rollbutt_off.png" alt="2번" /></a></li>
                         <li class="seq butt2"><a href="#butt"><img src="/resources/home/img/btn_rollbutt_off.png" alt="3번" /></a></li>
@@ -176,19 +176,19 @@ $('.rollingbtn li.seq a').each(function(index){
 			<div class="about_box">
 				<ul class="place_list box_inner clear">
 					<li><a href="#" onclick="$('.popup_base').css('height',$(document).height());$('.contact_pop').show();">
-							<img class="img_topplace" src="/resources/home/imgno_image.png" alt="OOOO OOOOO" style="opacity:0.7;"/>
+							<img class="img_topplace" src="/resources/home/img/no_image.png" alt="OOOO OOOOO" style="opacity:0.7;"/>
 							<h3>OOOO OOOOO</h3>
 							<p class="txt">OOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOO!</p>
 							<span class="view">VIEW</span></a>
 					</li>
 					<li><a href="#" onclick="$('.popup_base').css('height',$(document).height());$('.space_pop').show();">
-							<img class="img_topplace" src="/resources/home/imgno_image.png" alt="OOOO OOOOO" style="opacity:0.7;"/>
+							<img class="img_topplace" src="/resources/home/img/no_image.png" alt="OOOO OOOOO" style="opacity:0.7;"/>
 							<h3>OOOO OOOOO</h3>
 							<p class="txt">OOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOO.</p>
 							<span class="view">VIEW</span></a>
 					</li>
 					<li><a href="#" onclick="$('.popup_base').css('height',$(document).height());$('.program_pop').show();">
-							<img class="img_topplace" src="/resources/home/imgno_image.png" alt="OOOO OOOOO" style="opacity:0.7;"/>
+							<img class="img_topplace" src="/resources/home/img/no_image.png" alt="OOOO OOOOO" style="opacity:0.7;"/>
 							<h3>OOOO OOOOO</h3>
 							<p class="txt">OOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOO</p>
 							<span class="view">VIEW</span></a>
@@ -220,7 +220,7 @@ $('.rollingbtn li.seq a').each(function(index){
 		</div>
 		<!-- //카카오톡상담및최근공지사항영역 -->
 	</div>
-	<!-- //메이콘텐츠영역 -->
+	<!-- //메인콘텐츠영역 -->
 	
 	<!-- 푸터메뉴및사업자정보영역 -->
 	<footer>
