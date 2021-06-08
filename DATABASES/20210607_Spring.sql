@@ -469,7 +469,7 @@ BEGIN
   DELETE FROM tbl_member where 1=1;
   --cnt 변수 IN 1부터 P_COUNT까지 루프반복;
   FOR cnt IN 1..p_count LOOP
-    IF(cnt=1) THEN -- cnt가 증가값이 100일때
+    IF(p_count=cnt) THEN -- cnt가 증가값이 100일때
         --등록쿼리(아래)
         INSERT INTO tbl_member VALUES (
         'admin'
