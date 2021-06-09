@@ -15,10 +15,10 @@ public class MemberVO {
 	private String user_pw;
 	private String user_name;
 	private String email;
-	private Integer point; 
+	private Integer m_point; 
 	//정수형 int를 사용하지 않고, Integer을 사용하는 이유는 클래스(참조형)데이터는 null을 허용하기 때문
 	private boolean enabled;//논리-불린형 boolean -> boolean 사용
-	private String levels;
+	private String m_level;
 	private Date reg_date;
 	private Date update_date;
 	
@@ -49,10 +49,10 @@ public class MemberVO {
 		this.email = email;
 	}
 	public Integer getPoint() {
-		return point;
+		return m_point;
 	}
 	public void setPoint(Integer point) {
-		this.point = point;
+		this.m_point = point;
 	}
 	public boolean isEnabled() {
 		return enabled;
@@ -61,10 +61,10 @@ public class MemberVO {
 		this.enabled = enabled;
 	}
 	public String getLevels() {
-		return levels;
+		return m_level;
 	}
-	public void setLevels(String levels) {
-		this.levels = levels;
+	public void setLevels(String m_level) {
+		this.m_level = m_level;
 	}
 	public Date getReg_date() {
 		return reg_date;

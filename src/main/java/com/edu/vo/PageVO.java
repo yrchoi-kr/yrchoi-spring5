@@ -17,6 +17,16 @@ public class PageVO {
 	private String search_keyword;//jsp에서 받은 검색어 쿼리전용 변수
 	private String search_type;//검색조건에 해당하는 쿼리 전용변수
 	private int queryStartNo; //쿼리전용 변수
+	
+	
+	
+	@Override
+	public String toString() {
+		return "PageVO [queryPerPageNum=" + queryPerPageNum + ", page=" + page + ", totalCount=" + totalCount
+				+ ", startPage=" + startPage + ", perPageNum=" + perPageNum + ", endPage=" + endPage + ", prev=" + prev
+				+ ", next=" + next + ", search_keyword=" + search_keyword + ", search_type=" + search_type
+				+ ", queryStartNo=" + queryStartNo + "]";
+	}
 	public int getQuerySrartNo() {
 		//this.page-1하는 이유는 jsp에서 1,2,3...받지만,
 		//쿼리에서는 0,1,2...으로 사용되기 때문
@@ -26,10 +36,10 @@ public class PageVO {
 	public void setQuerySrartNo(int querySrartNo) {
 		this.queryStartNo = querySrartNo;
 	}
-	public int getQuertPerPageNum() {
+	public int getQueryPerPageNum() {
 		return queryPerPageNum;
 	}
-	public void setQuertPerPageNum(int quertPerPageNum) {
+	public void setQueryPerPageNum(int quertPerPageNum) {
 		this.queryPerPageNum = quertPerPageNum;
 	}
 	public Integer getPage() {
@@ -50,6 +60,14 @@ public class PageVO {
 		// 이 메서드는 totalCount변수값을 기반으로 prev,next,startPage,endPage 등등을 구현하게 됩니다.
 		int tempEnd = (int) Math.ceil(page/(double)this.perPageNum)*this.perPageNum;
 		this.startPage = (tempEnd - this.perPageNum) + 1;
+		if(tempEnd*this.queryPerPageNum > this.totalCount) {
+			this.endPage = (int)Math.ceil((this.totalCount/(double)this.queryPerPageNum));
+		} else {
+			this.endPage = tempEnd;
+		}
+		
+		this.prev = (this.startPage > 1);
+		this.next = (this.endPage*this.queryPerPageNum) < this.totalCount;
 	}
 	public int getStartPage() {
 		return startPage;
