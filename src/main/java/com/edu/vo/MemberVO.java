@@ -51,8 +51,8 @@ public class MemberVO {
 	public Integer getPoint() {
 		return m_point;
 	}
-	public void setPoint(Integer point) {
-		this.m_point = point;
+	public void setPoint(Integer m_point) {
+		this.m_point = m_point;
 	}
 	public boolean isEnabled() {
 		return enabled;
