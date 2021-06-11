@@ -33,8 +33,8 @@ if조건문에서 test조건부분에 문자열비교시 '문자열'.toString()�
 	update tbl_member set
 	email = #{email},
 	enabled = #{enabled},
-	m_level = #{m_level},
-	m_point = #{m_point},
+	levels = #{levels},
+	point = #{point},
 	update_date = systimestamp,
 	<if test="user_pw != ''">
 	user_pw = #{user_pw},
@@ -58,9 +58,9 @@ user_id,
 user_pw,
 user_name,
 email,
-m_point,
+point,
 enabled,
-m_level,
+levels,
 reg_date
 ) 
 values 
@@ -69,9 +69,9 @@ values
 #{user_pw},
 #{user_name},
 #{email},
-#{m_point},
+#{point},
 #{enabled},
-#{m_level},
+#{levels},
 systimestamp
 )
 </insert>

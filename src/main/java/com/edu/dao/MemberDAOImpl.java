@@ -56,8 +56,8 @@ public class MemberDAOImpl implements IF_MemberDAO{
 
 	@Override
 	public void updateMember(MemberVO memberOne) throws Exception {
-		// TODO Auto-generated method stub
+		// DB 마이바티스 쿼리 호출(아래)
 		sqlSession.update("memberMapper.updateMember", memberOne);
 	}
-	
+
 }

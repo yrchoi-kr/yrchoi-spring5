@@ -27,14 +27,14 @@ public class PageVO {
 				+ ", next=" + next + ", search_keyword=" + search_keyword + ", search_type=" + search_type
 				+ ", queryStartNo=" + queryStartNo + "]";
 	}
-	public int getQuerySrartNo() {
+	public int getQueryStartNo() {
 		//this.page-1하는 이유는 jsp에서 1,2,3...받지만,
 		//쿼리에서는 0,1,2...으로 사용되기 때문
-		queryStartNo = (this.page-1)*queryPerPageNum;
+		queryStartNo = (this.page-1);
 		return queryStartNo;
 	}
-	public void setQuerySrartNo(int querySrartNo) {
-		this.queryStartNo = querySrartNo;
+	public void setQueryStartNo(int queryStartNo) {
+		this.queryStartNo = queryStartNo;
 	}
 	public int getQueryPerPageNum() {
 		return queryPerPageNum;
