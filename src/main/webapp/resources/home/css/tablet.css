@@ -1,16 +1,15 @@
 @charset "UTF-8";
-/* 테블릿용 메인페이지 스타일 지정(아래) */
-@media all and (min-width:801px) {
-	/* 상단로고와 메뉴스타일 */
+/* 태블릿용 메인페이지 스타일 지정(아래) */
+@media all and (min-width:801px){
 	header {
 		height: 113px;
 	}
 	.header_area h1 {
-		float: left;/* 로고 이미지를 가운데 -> 왼쪽으로 정렬 */
+		float: left; /* 로고 이미지를 가운데 -> 왼쪽으로 정렬 */
 		padding: 15px 0px 0px;
 		padding-left: 20px;
 		width: auto;
-		height: inherit;/* 상속:현재영역의 부모의 높이를 그대로 사용하겠다는 명시 */
+		height: inherit; /*상속; 현재영역의 부모의 높이를 상속 받겠다는 뜻*/
 		text-align: inherit;
 	}
 	.header_area h1 a {
@@ -20,7 +19,8 @@
 		background-size: 70px 80px !important;
 	}
 	.openMOgnb {
-		display: none; /* 모바일용 햄버거메뉴 숨기기 */
+		display: none; 
+		/* 모바일용 햄버거 메뉴 숨김 */
 	}
 	.header_cont {
 		display: block;
@@ -30,8 +30,8 @@
 		background: none;
 		margin-top: 0px;
 	}
-	.closePop { display: none; }
-	.util { /* 메인메뉴 상단의 소메뉴 util이라고 이름지음 */
+	.closePop { display: none;}
+	.util {
 		padding: 0px;
 		text-align: right;
 		padding-top: 10px;
@@ -46,7 +46,7 @@
 	.util li a {
 		font-size: 14px;
 	}
-	.gnb { /* 대메뉴=1차메뉴 */
+	.gnb {
 		float: right;
 		padding-top: 5px;
 		height: inherit;
@@ -57,8 +57,8 @@
 		text-align: inherit;
 		box-sizing: inherit;
 		border-bottom: none;
-	}
-	.gnb li:nth-child(2n+1) { /* 대메뉴 중간 막대 사라지게 하는 명령 */
+	}	
+	.gnb li:nth-child(2n+1) {
 		border: none;
 	}
 	.gnb li a {
@@ -74,19 +74,18 @@
 	.gnb li + li + li a {
 		background: none;
 	}
-	.gnb li + li + li + li a {
+	.gnb li + li + li +li a {
 		background: none;
 	}
-	.gnb li:last-child a { /* 제일 오른쪽 li태그 영역 */
+	.gnb li:last-child a {    /* 제일 오른쪽 li태그 영역 */
 		padding-right: 0px;
 	}
-	/* //상단로고와 메뉴스타일 */
-
-    /* 컨테이너영역 */
+    /* //상단로고와 메뉴스타일 */
+    	/* 컨테이너영역 */
 	#container {
 		padding-bottom: 20px;
 		width: auto;
-		position: inherit;/* 상속:부모영역의 위치를 상속받습니다. */
+		position: inherit; 
 	}
 	/* //컨테이너영역 */
 	/* 슬라이드영역 */
@@ -94,7 +93,7 @@
 		height: 550px;
 	}
 	/* //슬라이드영역 */
-	/* 최신겔러리 */
+	/* 최신 겔러리 */
 	.about_area h2 {
 		padding: 55px 0px 105px;
 		font-size: 40px;
@@ -111,11 +110,11 @@
 		margin-left: 0px;
 	}
 	.place_list li {
-		float: left;/* 세로배치를 가로배치로 바꾸는 명령 */
-		width: 32%; /* 32%x3=96%, 3개 사이 2%씩이면 = 4%가 여백, 전체 100% */
+		float: left; /*세로배치를 가로 배치로 바꾸는 명령어*/
+		width: 32%;  /* 32% x 3 = 96%, 3개 사이 2%씩 4%가 여백 */
 		margin-left: 2%;
-		position: relative; /* li태그의 안쪽 겔러리 이미지,제목 위치의 기준값 */
-		top: -50px;
+		position: relative; /* li태그 안쪽 겔러리 이미지, 제목 위치의 기준값 */
+		top: -50%;
 		padding: 0px;
 	}
 	.place_list li p.txt {
@@ -125,9 +124,8 @@
 	.place_list li .view {
 		margin-top: 20px;
 	}
-	/* //최신겔러리 */
-
-    /* 전화상담과 최근공지사항 */
+	/* //최신 겔러리 */
+    	/* 전화상담과 최근공지사항 */
 	.appbbs_area {
 		padding: 60px 0px;
 	}
@@ -138,36 +136,37 @@
 	.app_line {
 		display: inherit;
 		float: left;
-		width: 65%; /* 나머지 35%가 최근공지사항영역 */
-		box-sizing: border-box;
+		width: 65%;
 		padding: 46px 0px;
-		background: url(../img/bg_app.jpg);/* no-repeat가 필요없음. 단일색상이라서 */
-		font-size: 0px;/* 시각장애을 위해서 존재 */
+		background: url(../img/bg_app.jpg); /*no-repeat 필요 없음 단일색상이어서*/
+		font-size: 0px;  /*웹 접근성 시각장애인을 위해 존재만 함*/
 		text-align: center;
 	}
 	.app_line a {
-		font-size: 19px;
+		font-size: 21px;
 		display: inline-block;
-		width: 42.4%;/* 65%(app_line)영역의 42.4%를 가집니다. */
+		width: 42.4%;
 		height: 100px;
 		line-height: 100px;
 		box-sizing: border-box;
 		padding-left: 55px;
 		text-align: left;
-		background: rgba(0,0,0,0.3) url(../img/ico_katalk.png) no-repeat 10px 50%;/* 10px 가로위치, 50% 세로가운데위치 */
+		background: rgba(0,0,0,0.3) url(../img/ico_katalk.png) no-repeat 10px 50%; /*10px 가로위치, 50%는 세로 가운데 위치 */
 		border: 2px solid #fff;
 		color: #fff;
-		vertical-align: middle;/* 세로가운데정렬 */
+		vertical-align: middle;
 		margin-right: 10px;
+
 	}
-	.app_line a + a {/* 형제 sibling 태그영역 */
-		background-image: url(../img/ico_phone.png);
+	.app_line a + a { 
+		background-image: url(../img/ico_phone.png); 
 		margin-right: 0px;
 		padding-left: 65px;
+
 	}
-	.bbs_line { /* 최신공지사항영역 */
+	.bbs_line { /*최신 공지사항 영역*/
 		float: right;
-		width: 29%; /* 나머지 35%중 29%영역지정 나머지 6%는 여백으로 사용 */
+		width: 29%;
 		border-top: none;
 		padding: inherit;
 	}
@@ -178,30 +177,29 @@
 	.bbs_line .notice_recent li a {
 		display: block;
 		padding-left: 14px;
-		background: url(../img/ico_bullet.png) no-repeat 0px 50%;
+		background: url(../img/ico_bullet.png) no-repeat 0 50%;
 		overflow: hidden;
-		text-overflow: ellipsis;/* 문자열이 영역을 벗어났을 ... 표시하는 명령 */
-		white-space: nowrap;/* 문자를 자를때 단어를 기준으로 하지 wrapping 않겠다. */
+		text-overflow: ellipsis; /*문자열이 영역을 벗어났을때 ....처리 함*/
+		white-space: nowrap; /*줄바꿈 할때 단어를 기준으로 하지 않겟다.*/
 	}
-	/* //전화상담과 최근공지사항 */
-
+	/* // 전화상담과 최근공지사항 */
     /* 푸터영역 */
 	footer {
-		padding: inherit;/* 상속:부모 영역의 패딩속성을 상속받겠다. */
+		padding: inherit;
 	}
 	.foot_area {
 		padding-left: 20px;
 		padding-bottom: 0px;
 	}
-	.addr {
+	.area {
 		font-size: 13px;
 		line-height: 1.4;
 	}
 	.br_line {
-		display: inherit; /* 모바일에서 적용했던 스타일 해제 하겠다는 의미  */
+		display: inherit;  /*모바일에서 적용했던 스타일 해제 하고 부모의 값을 상속한다*/
 	}
 	.snslink {
-		position: absolute;/* 현재 태그를 고정위치로 만들겠다. */
+		position: absolute; /*현재 테그를 고정 위치로 만들겠다.*/
 		right: 20px;
 		top: 20px;
 		width: auto;
