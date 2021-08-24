@@ -56,11 +56,23 @@
                 <input value="${memberVO.email}" name="email" type="email" class="form-control" id="email" placeholder="이메일을 입력해 주세요" required>
               </div>
               <div class="form-group">
+                 <label for="exampleInputFile">프로필 이미지</label>
+                 <div class="form-group">
+           		 	<img style="width:150px; height:150px; border-radius: 70%;" onerror="this.src='/resources/admin/dist/img/default-150x150.png'" src="/resources/profile/${memberVO.user_id}.jpg">
+              	 </div>
+                 <div class="input-group">
+                   <div class="custom-file">
+                     <input name="file" type="file" class="custom-file-input" id="file0">
+                     <label class="custom-file-label" for="file0">파일선택(png)</label>
+                   </div>
+                 </div>
+              </div>
+              <div class="form-group">
                 <label for="point">포인트</label>
                 <input value="${memberVO.point}" name="point" type="number" class="form-control" id="point" placeholder="포인트를 입력해 주세요" required>
               </div>
               <div class="form-group">
-                <label for="enabled">로그인여부</label>
+                <label for="enabled">로그인가능여부</label>
                 <select name="enabled" id="enabled" class="form-control">
                   <option value="1" ${memberVO.enabled==true?'selected':''}>허용</option>
                   <option value="0" ${memberVO.enabled==false?'selected':''}>금지</option>
@@ -83,7 +95,7 @@
             </div>
             <input name="page" type="hidden" value="${pageVO.page}">
             <input name="search_type" type="hidden" value="${pageVO.search_type}">
-            <input name="search_keyword" type="hidden" value="${pageVO.search_keyword}">
+           <%-- <input name="search_keyword" type="hidden" value="${pageVO.search_keyword}"> --%>
           </form>
         </div>
         <!-- //콘텐츠 내용 -->
@@ -95,6 +107,15 @@
 
 <%@ include file="../include/footer.jsp" %>
 <!-- 관리자단은 jQuery코어가 하단 footer에 있기 때문에 여기에 위치합니다. -->
+<!-- 첨부파일 부트스트랩 디자인 JS -->
+<script src="/resources/admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script>
+	  $(document).ready(function() {
+	    // 첨부파일 선택한 내용 출력 실행
+	    bsCustomFileInput.init(); 
+	  });
+	  // 노트 폰트 수정.note-editable {font-family:Nanum Gothic} 
+</script>
 <script>
 $(document).ready(function(){
 	var form_update = $("form[name='form_write']");
@@ -104,9 +125,16 @@ $(document).ready(function(){
 		form_update.submit();
 	});
 	$("#btn_list").click(function(){
+		
+		<%-- 폼 전송시 암호와 같은 url이 노출되므로 아래로 변경
 		form_update.attr("action","/admin/member/member_list");
 		form_update.attr("method","get");
 		form_update.submit();
+		--%>
+		
+		var queryString = 'page=${pageVO.page}&search_type=${pageVO.search_type}';
+		location.replace('/admin/member/member_list?'+queryString);
+
 	});
 });
 </script>

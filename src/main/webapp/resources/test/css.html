@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- 페이지 언어 설정: Unicod Type Fromat, UTF-8이 아니면 한글 깨짐-->
+    <!-- utf-8일본어, 대만어, 한국어 등등 안꺠지고 가능  -->
+    <!-- 다국어지원 사이트에서 필수 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- viewport =반응형 사이트에서 필수 -->
+    <title>CSS 실습</title>
+    <!-- 나눔고딕 외부 글꼴 사용하기 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<style>
+   /* 03 선택자 종류
+      범용선택자: * (별표: 에스터리스크)
+      태그선택자: h1, h2, p, div, header, footer, article
+      class 선택자: .class이름 ; 특징: 중복사용 가능
+      id 선택자: #id이름, 특징: 중복사용하면 오동작 됨.
+      가상 선택자: ::after ::before 
+      가상요소(가상 element=가상 태그): :hover
+      사용 예 a:hover
+   */
+   h1 { background-color: skyblue;}
+   div * {
+      color: rgb(54, 165, 199);
+   }
+   .box-one, .box-two{background-color: tomato;}
+   #box-four,#box-five{background-color: tan;}
+   .box-one p::after{content: ' add';}
+   .box-one p::before{content:'add+ ';}
+   a:hover {color: white;}
+   /* 크기단위 font크기, image 크기, youtube영상 크기 단위 종류 3가지 -> px, ~em(1.2배수), ~rem(root기반 배수) */
+.box-one{
+    font-size: 8px;
+   /* font-size: 1.5em;  웹브라우저 기본 폰트크기는 16px = 1em */
+   /* font-size: 1.5rem; */
+   }
+.box-one p {
+   /* 웹 브라우저 기폰 폰트인 16px의 1.5배가 아니고, 부모요소(여기서 8px의 1.5배 */
+   font-size: 1.5em;
+   /* rem은 근본(16px의 1.5배) */
+   font-size: 1rem;
+   /* 위에서 부터 해석하는 방식 인터프리터형=자바스크립트는 인터프리터 가장 아래 것으로 덮어씌어짐 */
+}
+
+.box-one {
+   width: 200px;
+   height: 200px;
+   background-color: tan;
+   /* 안쪽 여백 */
+   padding: 20px; 
+   /* 바깥여백 : 4가지 방향 12시 에서 시작 시계방향  */
+   margin: 20px 10px 30px 30px; 
+   /* 바깥여백 : 2가지 방향 상하 / 좌우 */
+   margin: 30px 60px; /* 30 상하, 60 좌우 */
+   border: 10px solid black; /*바깥쪽 여백*/
+   box-sizing: border-box;
+   /* box-sizing: border-box 주석처리 해가며 차이 확인할 것 (레이아웃의 필수명령어)*/
+   /* 가로 가운데 정렬 하는 방법 */
+   margin: 0px;
+   margin: 0 auto; /* 0 상하, auto 좌우 */
+   margin: 0px;
+   position: fixed; /* absolute 자리를 다른 태그와 관련없이 위치를 가짐*/
+                    /* fixed 고정 위치 */
+   margin-left:20px;
+   margin-top:20px;
+}
+.box-two {
+   width:200px;
+   height:200px;
+   background-color: red;
+   
+}
+</style>
+</head>
+<body>
+   <h1>hello CSS</h1>
+   <div class="box-one"><p style="color:white;"><a href="#">상단으로 이동</a></p></div>
+   <div class="box-two"> <a href="#">two two two</a></div>
+   <div class="box-three">three</div>
+   <div id="box-four"><p>four</p></div>
+   <div id="box-five">five</div>
+     <!-- 
+        10 크롬 확장프로그램으로 컬러 피커 사용해보기
+        09 구글 폰트 사용하기: 나눔고딕체 사용
+         - 구글 폰트 검색
+        08 위치: 고정, 절대위치, 상대위치(기준)
+        07 정렬: 가로 가운데정렬
+        06 테두리크기: 여백(안쪽 패딩, 바깥쪽 마진)
+        05 박스크기: 박스크기에 테두리크기,패딩크기 무시
+        04 크기 단위: px, em(부모영역의 2배), rem(루트영역의 2배)
+        03 선택자 종류 사용
+         - 
+        02 CSS용어 설명: h${헬로 CSS}*6
+         - Cascade style sheet 계층형 스타일 표 
+        01 css 적용하는 3가지 방법 확인, 내부css, 외부css, 인라인css
+         - 유지보수할때는 내부, 인라인, 새로만들떄는 외부 많이 사용함
+     -->
+    
+     <p><span style="color: tomato;">Lorem ipsum</span> dolor sit amet consectetur adipisicing elit. Alias, ea possimus perspiciatis pariatur voluptates fugiat quae dicta voluptate culpa delectus quam nesciunt iure recusandae asperiores non necessitatibus quo temporibus nam.</p>
+
+     <!-- span은 아무자리를 차지하지않는 명령어 주로 스타일 지정할때 사용함 -->
+</body>
+</html>
