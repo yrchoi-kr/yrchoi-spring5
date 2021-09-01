@@ -3,27 +3,26 @@ package com.edu.vo;
 import java.util.Date;
 
 /**
- * 이 클래스는 게시물 CRUD에 필요한 멤버변수(필드)가 정의된 클래스 입니다.
- * 목적은 데이터 변수값 이동시 Get/Set 작업이 주 목적입니다.
- * @author 라건국
+ * 게시물 CRUD에 필요한 멤버변수가 정의된 클래스
+ * 데이터 변수값 이동시 GET/SET 작업이 주 목적
+ * @author 은비
  *
  */
 public class BoardVO {
-	//멤버변수 생성
-	private Integer bno;
+	private int bno;
 	private String title;
 	private String content;
 	private String writer;
 	private Integer view_count;
 	private Integer reply_count;
 	private Date reg_date;
-	private Date update;
-	private String board_type; //FK
-	//private String save_file_name; 첨부파일이 1개 이상일 수 있기 때문에...
-	//게시물 등록시 1개. 그런데, 첨부파일 1개 이상필요합니다. 1개의 필드에 여러개를 입력할순 없습니다.
-	// 그래서, DB에는 없는 가상 멤버변수(필드) 2개를 만듭니다.
-	private String[] save_file_names;//Null 가능
-	private String[] real_file_names;//Null 가능
+	private Date update_date;
+	private String board_type;
+	
+	// 게시물 등록시 첨부파일 1개 이상일 때, DB에는 없는 필드를 2개가 더 필요하다.
+	private String[] save_file_names;
+	private String[] real_file_names;
+	
 	
 	public String[] getSave_file_names() {
 		return save_file_names;
@@ -41,26 +40,22 @@ public class BoardVO {
 		this.real_file_names = real_file_names;
 	}
 
-	//디버그용 toString()생성
 	@Override
 	public String toString() {
-		return "BoardVO [bon=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", view_count=" + view_count + ", reply_count=" + reply_count + ", board_type=" + board_type + "]";
+		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer
+				+ ", view_count=" + view_count + ", reply_count=" + reply_count + ", reg_date=" + reg_date
+				+ ", update_date=" + update_date + ", board_type=" + board_type + "]";
 	}
-
-	//
 	
+	public int getBno() {
+		return bno;
+	}
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
 	public String getTitle() {
 		return title;
 	}
-	public Integer getBno() {
-		return bno;
-	}
-
-	public void setBno(Integer bno) {
-		this.bno = bno;
-	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -94,19 +89,18 @@ public class BoardVO {
 	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
-	public Date getUpdate() {
-		return update;
+	public Date getUpdate_date() {
+		return update_date;
 	}
-	public void setUpdate(Date update) {
-		this.update = update;
+	public void setUpdate_date(Date update_date) {
+		this.update_date = update_date;
 	}
-
 	public String getBoard_type() {
 		return board_type;
 	}
-
 	public void setBoard_type(String board_type) {
 		this.board_type = board_type;
 	}
+	
 	
 }

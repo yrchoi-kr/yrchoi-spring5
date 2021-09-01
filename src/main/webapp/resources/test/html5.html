@@ -5,58 +5,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML5 실습</title>
-    <style> 
-        table, tr, th, td  {
-            border: 1px  solid black;
-            font-size: 13px;
+    <style>
+        table, tr, th, td {
+            border: 1px solid black;
+            font-size: 16px;
         }
-        /* style의 주석 Ctrl+/키 조합 */
-        /* 테이블 태그의 테두리 이중선을 1개 선으로 병합 */
+        /* css 주석 */
+        /* 테이블 태그의 테두리 이중선을 1개의 선으로 병합 */
         table {
             border-collapse: collapse;
         }
-        
-    </style>       
-     <!-- HTML5레이아웃구조
-    header, nav, section, article, aside, footer 
-    -->
-    <style>
-        /* css: cascade 계층형 style sheet 계층형 스타일 표 */
-        header, nav, section, aside, footer{border:1px dotted black;}
-        header > h1, footer > h1 { text-align: center; }
-        nav { display:block; height: 60px;}
+                /* css : cascade style sheet 계층형 스타일 표 */
+                header, nav, section, aside, footer {
+            border: 1px dotted black;
+        }
+        header > h1, footer { text-align: center; }
+        nav { display: block; height: 60px;}
         nav > ul > li {
-            float:left; margin-right: 30px;
-        }
-        div#contents {vertical-align: middle;}
+            float: left;
+            margin-right: 30px;
+            margin-left: 5px;
+        } 
         div.contents {
-            /* 내부의 컨텐츠 기준되는 외부 요소에 관계형 포지션 추가 */
-            position: relative
-        }
+            /* 내부의 컨텐츠 기준되는 외부 요소에 관계형 포지션 */
+             position: relative; 
+             overflow: hidden;
+             }  
         section {
-            width: 79%; display: inline-block; 
-            }
-        section > article
-            {
-            margin: 30px 40px;
-            border: 1px solid skyblue;}
+            width: 79%;
+            display: inline-block;
+            text-align: center;
+        }
         aside {
-            width: 20%; display: inline-block; 
+            width: 20%;
+            display: inline-block;
+            text-align: center;
+            position: absolute;
             height: 100%;
             right: 0px;
-            position: absolute;
+        }
+        section > article { 
+            margin: 10px;
+            border: 1px solid skyblue;
             }
+
+
     </style>
 </head>
 <body>
+
+    <!-- HTML5 레이아웃 (기본 구조)
+         header, nav, section, article, aside, footer
+    -->
+
     <header>
         <h1>Header</h1>
     </header>
     <nav>
         <ul>
-            <li><a href="#">menu1</a> </li>
-            <li><a href="#">menu2</a> </li>
-            <li><a href="#">menu3</a> </li>
+            <li><a href="#">menu1</a></li> 
+            <li><a href="#">menu2</a></li>
+            <li><a href="#">menu3</a></li> 
         </ul>
     </nav>
     <div class="contents">
@@ -68,23 +77,25 @@
             <article>
                 <h2>article2</h2>
             </article>
-            <article>
-                <h2>article3</h2>
-            </article>
         </section>
         <aside>
-            <h1>aside</h1>
+            <h2>aside</h2>
         </aside>
     </div>
     <footer>
-        <h1>footer</h1>
+        <h2>footer</h2>
     </footer>
-    <!-- 테이블 태그 재어: 셀 병합 -->
-    <!-- table, tr(table row 줄), td(table data칸) -->
+    <br>
+
+    <!-- table 태그 : 테이블 제어 (셀 병합) -->
+    <!-- table>(tr>td*5)*3 -->
+    <!-- tr : table row,
+         td : table data
+    -->
     <table>
         <tr>
             <th>순번</th>
-            <th>책이름</th>
+            <th>도서명</th>
             <th>가격</th>
             <th>판매량</th>
             <th>판매액</th>
@@ -94,7 +105,6 @@
             <td>HTML</td>
             <td>7,000</td>
             <td rowspan="2">1,000</td>
-            <!-- rowspan 세로칸을 병합 -->
             <td>7,000,000</td>
         </tr>
         <tr>
@@ -105,62 +115,82 @@
             <td>7,000,000</td>
         </tr>
         <tr>
-            <td colspan="4">합계</td>
-            <!-- colspan 가로칸 병합 -->
+            <!-- 셀 병합 :
+                    - 가로칸 병합 : colspan="칸수"  
+                    - 세로칸 병합 : rowspan="칸수"  
+            -->
+            <td colspan="4">총 합계</td>
             <td>14,000,000</td>
         </tr>
     </table>
 
-    <!-- html5 폼 태그 사용 엘리먼트: form태그, input 태그  -->
-    <!-- form의 액션-데이터 자료전송(메서드:방법), radio(file 이름이 같음), submit(액션이름이중요) 중요 -->
-    <form action="https://naver.com" Method="GET">
-        <input type="text" name="text" id="">
-        <input type="password" name="password" id="">
-        <input type="date" name="date" id="">
-        <input type="color" name="color" id="">
-        <input type="radio" name="radio" id="">
-        <input type="radio" name="radio" id="">
-        <!-- 라디오버튼은 2개 이상 중 1개만 선택,name이 같음 -->
-        <!-- 체크박스는 2개 이상 있을때 2개이상 선택 가능 name이 다름 -->
-        <input type="checkbox" name="checkbox1" id="">
-        <input type="checkbox" name="checkbox2" id="">
-        <input type="file" name="file" id="">
-        <input type="file" name="file" id="">
+    <!-- form 태그 사용 : form 태그, input 태그 (엘리먼트) -->
+    <!-- action(데이터 전송), method, radio, submit -->
+    <form action="https://naver.com">
+        <p><input type="text" name="text" id="" required autofocus></p>
+        <p><input type="text" name="text" id=""></p>
+        <p><input type="password" name="password" id=""></p>
+        <p><input type="date" name="date" id=""></p>
+        <p><input type="color" name="color" id=""></p>
+        <!-- 라디오버튼은 2개 이상중에 1개만 선택, name이 같음 -->
+        <p><input type="radio" name="radio" id="">여자
+        <input type="radio" name="radio" id="">남자</p>
+        <!-- 체크박스는 2개 이상중에 2개 이상 선택가능, 그래서 이름이 틀려야함. -->
+        <p><label><input type="checkbox" name="checkbox1" id="">오전</label>
+        <input type="checkbox" name="checkbox2" id="">오후</p>
+        <p><input type="file" name="file" id=""></p>
+        <p><input type="file" name="file" id=""></p>
         <textarea name="textarea" id="" cols="30" rows="10"></textarea>
-        <input type="button" value="버튼">
-        <input type="reset" value="입력취소">
+        <p><input type="button" value="버튼">
         <input type="submit" value="서밋">
-
+        <input type="reset" value="입력 취소"></p>
     </form>
-    <!-- 유튜브 영상 집어넣기 iframe -->
-    <!-- 유튜브 들어가서 소스코드 복사하기 -->
-    <iframe width="100%" height="300px" src="https://www.youtube.com/embed/DQSrC_b7cq8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <!-- 컨텐츠 경로... 상대경로, 절대경로 -->
-    <img style="width: 100%;" src="img/surfing.jpg" alt="엑박일때 표시할 내용이 여기에">    
-    <!-- 이미지 태그 -->
-    <img style="width: 100%;" src="/test/img/surfing.jpg"
-    <!-- 영역지정 div : division, 가상링크는 #으로 생성 -->
-    <div style="background-color:rgb(111, 138, 189);">
+
+    <!-- 유튜브 영상 넣기 -->
+    <iframe width="100%" height="300px" src="https://nate.com" frameborder="0"></iframe>
+    <p><iframe width="100%" height="550px" src="https://www.youtube.com/embed/bG9tqsgHNlo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+
+    <!-- 
+        컨텐츠 경로 = 상대경로(첫번째).은 현재폴더를 가르킨다.
+                     절대경로(두번째)
+    -->
+    <img style="width: 200px;" src="./img/green.jpg" alt="엑박일 때 표시할 내용 여기에 ">
+    <img style="width: 200px;" src="/test/img/green.jpg" alt="엑박일 때 표시할 내용 여기에 ">
+
+    <!-- 
+        영역지정 div : division 
+        가상링크는 #으로 만든다.
+    -->
+    <div style="background-color: greenyellow;">
         <a href="#">네이버</a>
         <a href="#">다음</a>
         <a href="#">네이트</a>
     </div>
-    <!-- 리스트형 2가지: ol(Ordered List 정렬된 리스트), ul(Unorderded List 비정렬) -->
-    <ol type="i">
-        <li>헬로 html</li>
-        <li>헬로 html</li>
-        <li>헬로 html</li>
-        <li>헬로 html</li>
+
+    <!-- 리스트형 2가지 : ol(Ordered List 정렬된 리스트[숫자 생성]), 
+                         ul(Unordered List 비정렬 리스트[숫자 X]) -->
+    <ol type="A">
+        <li>Hello HTML</li>
+        <li>Hello HTML</li>
+        <li>Hello HTML</li>
+        <li>Hello HTML</li>
     </ol>
+
     <ul>
-        <li>헬로 html</li>
-        <li>헬로 html</li>
-        <li>헬로 html</li>
+        <li>Hello HTML</li>
+        <li>Hello HTML</li>
+        <li>Hello HTML</li>
     </ul>
-    <!-- H20, X2첨자로 보이게  -->
-    <p>H<sub>2</sub>O</p>
+
+    <!-- 첨자 sub = 아래첨자, sup = 윗첨자 -->
+    <p>H<sub>2</sub>o</p>
     <p>X<sup>2</sup>=4</p>
-    <!-- 로렘 입숨(립숨)은 작업 공간에  채울 내용을 자동으로 생성해 주는 기능 -->
+
+    <!--
+        로렘 입숨(립숨)은 작업공간에 채울 내용을 자동으로 생성해 준다.
+      -->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, repellendus!</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime quidem consequatur, labore possimus porro obcaecati fuga provident ducimus ipsa repellat.</p>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -169,63 +199,61 @@
                 <th>작성자</th>
             </tr>
         </thead>
-        <tbody>             
+        <tbody>
             <tr>
                 <td>1</td>
-                <td>선거에 있어서 최고득표자가 2인 이상인 때...</td>
-                <td>이맹전</td>
-            </tr>        
+                <td>국가의 세입·세출의 결산, 국가 및 법률이...</td>
+                <td>이완용</td>
+            </tr>   
             <tr>
                 <td>2</td>
-                <td>언론·출판은 타인의 명예나 권리 또는 공...</td>
-                <td>의자왕</td>
-            </tr>        
+                <td>군인은 현역을 면한 후가 아니면 국무위원...</td>
+                <td>박팽년</td>
+            </tr>
             <tr>
                 <td>3</td>
-                <td>모든 국민은 직업선택의 자유를 가진다. 국...</td>
-                <td>이인로</td>
+                <td>국가원로자문회의의 조직·직무범위 기타 ...</td>
+                <td>관창</td>
             </tr>        
             <tr>
                 <td>4</td>
-                <td>국회가 재적의원 과반수의 찬성으로 계엄의...</td>
-                <td>정약용</td>
-            </tr>
+                <td>모든 국민은 거주·이전의 자유를 가진다. ...</td>
+                <td>이상</td>
+            </tr>     
             <tr>
                 <td>5</td>
-                <td>모든 국민은 건강하고 쾌적한 환경에서 생...</td>
-                <td>손병희</td>
-            </tr>
+                <td>대통령은 국민의 보통·평등·직접·비밀선...</td>
+                <td>신사임당</td>
+            </tr>    
         </tbody>
         </table>
-    <p><strong>Lorem</strong> <em>ipsum</em> <mark>dolor</mark> sit, amet consectetur adipisicing elit. Explicabo ea non molestiae perferendis vel expedita quaerat commodi quo vero dolores, mollitia dolorem neque quae quis, accusamus, dolore provident! Commodi, tempore!</p>
 
-    <!-- html:5콜론, ;세미콜론 -->
-    <!-- h는 헤드태그 약자 글에 제목에 표시 -->
-    <!-- P태그는 문단의 약자(Paragraph) -->
-    <!-- 줄바꿈이 이루어지는 영역태그를 블럭영역 -->
-    <!-- 줄바꿈이 이루어지지 않는 영역 span은 인라인 블럭 = span -->
-    <!-- 도메인 (사람이 확인) ==IP주소(컴퓨터시스템) -->
-    <!-- 매칭(묶어준다) = 바인딩(묶어준다) -->
-    <!-- 사람색상(color) : red, blue, skyblue, black  -->
-    <!-- 컴퓨터 색상(color) #ff(빨강)00(초록)00(파랑), #000000 -->
-    <!-- 예, 흰색: #ffffff = #fff = white = 함수rgb(255, 255, 255)-->
-    <!-- #은 16진수를 말함. -->
-    <!-- 16진수는 0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f 총 16개로 이루어짐 -->
-    <!-- 빛의 3가지 색상(3원색) 빛은 더하면 흰색으로 변함 -->
-    <!-- 참고로 물감은 더하면 검은색으로 변함. -->
-
-    <span style="color:rgb(255, 255, 0);">헬로 htmL5</span>
-    <span>헬로 htmL5</span>
-    <hr>
+    <!-- html:5콜론, ;세미콜론 
+         Emmet 문법 사용
+         h${헬로 html}*6
+    -->
+    <!-- p태그는 문단의 약자 
+         줄바꿈이 이루어지는 영역태그를 블럭영역
+    -->
+    <!-- 줄바꿈이 이루어지지 않는 영역을 인라인블럭영역 -> span -->
+    <!-- 도메인(사람이확인) : IP주소(컴퓨터시스템) -->
+    <!-- 매칭 = 바인딩(묶어준다.) -->
+    <!-- 사람이 보는 색상(color) : red, blue, skyblue, black
+         컴퓨터가 인식하는 색상(color) : #000000(black), #ff0000(red)
+         #ff은 16진수를 나타냄(red), 00(green), 00(blue) 
+         - 빛의 3가지 색상(3원색) 빛은 더하면 흰색으로 변함.(#ffffff(white))
+           참고로, 물감은 더하면 검은색으로 변함.
+        표기방법) 흰색 : #ffffff = #fff = white = 함수 rgb(255, 255, 255)
+    -->
     <br>
-    <br><br>
-    <p>헬로 HTML1</p>
-    <p>헬로 HTML2</p>
-    <h3>헬로 htmL5</h3>
-    <h4>헬로 htmL5</h4>
-    <h5>헬로 htmL5</h5>
-    <h6>헬로 htmL5</h6>
-
+    <span style="color: rgb(255, 0, 0);">Hello Html5</span>
+    <span style="color: #6004ad;">Hello Html5</span>
+    <hr><br><br><br>
+    <p>Hello HTML5</p>
+    <p>Hello HTML5</p>
+    <h3>헬로 html</h3>
+    <h4>헬로 html</h4>
+    <h5>헬로 html</h5>
+    <h6>헬로 html</h6>
 </body>
-
 </html>

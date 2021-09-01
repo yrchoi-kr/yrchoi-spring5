@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../include/header.jsp" %>
-
-	<!-- 메인콘텐츠영역 -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+    <!-- 메인콘텐츠영역 -->
     <div id="container">
 		<!-- 메인상단위치표시영역 -->
 		<%@ include file="./board_header.jsp" %>
@@ -16,9 +15,9 @@
 				<fieldset>
 					<legend>검색</legend>
 					<input value="${session_search_keyword}" name="search_keyword" type="text" class="tbox" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요">
-					<button type="submit" class="btn_srch">검색</button>
+					<button class="btn_srch">검색</button>
 				</fieldset>
-				<input name="search_type" value="all" type="hidden">
+				<input type="hidden" name="search_type" value="all">
 			</form>
 			<!-- //검색폼영역 -->
 			
@@ -37,70 +36,65 @@
 				<tbody>
 				<c:forEach var="boardVO" items="${boardList}" varStatus="status">
 					<tr>
+						<!--  -->
 						<td>
-						<!-- 전체게시물개수-(현재페이지x1페이지당보여줄개수)+1페이지당보여줄개수-현재인덱스(위부터0) -->
-						${pageVO.totalCount-(pageVO.page*pageVO.queryPerPageNum)+pageVO.queryPerPageNum-status.index}
+						${pageVO.totalCount - (pageVO.page*pageVO.queryPerPageNum)+pageVO.queryPerPageNum-status.index}
 						</td>
-						<td class="tit_notice">
-						<a href="/home/board/board_view?bno=${boardVO.bno}&page=${pageVO.page}&search_type=${pageVO.search_type}">
-						${boardVO.title}
+						<td class="tit_notice"><a href="/home/board/board_view?bno=${boardVO.bno}&page=${pageVO.page}&search_type=${pageVO.search_type}">
+							${boardVO.title }
 						</a> </td>
 						<td>${boardVO.writer}</td>
-						<td>${boardVO.view_count}</td>
+						<td>${boardVO.view_count }</td>
 						<td>
-						<fmt:formatDate pattern="yyyy-MM-dd" value="${boardVO.reg_date}"/> 
+						<fmt:formatDate pattern="yyyy-MM-dd" value="${boardVO.reg_date }" />
 						</td>
-					</tr>	
-				</c:forEach>									
+					</tr>
+				</c:forEach>
 				</tbody>
 			</table>
 			<!-- //게시물리스트영역 -->
 			<style>
 				.disabled {
 					pointer-events:none;
-					cursor:default;
+					cursor:defalut;
 					opacity:0.5;
 				}
 			</style>
 			<!-- 페이징처리영역 -->
 			<div class="pagination justify-content-center">
-				<c:set var="disabled" value="${pageVO.prev?'':'disabled'}" />
-				<a href="/home/board/board_list?page=${pageVO.startPage-1}&search_type=${pageVO.search_type}" class="prevpage pbtn ${disabled}">
-				<img src="/resources/home/img/btn_prevpage.png" alt="이전 페이지로 이동">
-				</a>
+				<c:set var="disabled" value="${pageVO.prev?'':'disabled' }" />
+				<!-- <a href="javascript:;" class="firstpage  pbtn"><img src="img/btn_firstpage.png" alt="첫 페이지로 이동"></a> -->
+				<a href="/home/board/board_list?page=${pageVO.startPage-1}&search_type=${pageVO.search_type}" class="prevpage pbtn ${disabled }"><img src="/resources/home/img/btn_prevpage.png" alt="이전 페이지로 이동"></a>
 				
-				<c:forEach begin="${pageVO.startPage}" end="${pageVO.endPage}" step="1" var="idx">
-				<a href="/home/board/board_list?page=${idx}&search_type=${pageVO.search_type}"><span class="pagenum ${idx==pageVO.page?'currentpage':''}">${idx}</span></a>
+				<c:forEach begin="${pageVO.startPage}" end="${pageVO.endPage}" step="1" var="index">
+				<a href="/home/board/board_list?page=${index}&search_type=${pageVO.search_type}"><span class="pagenum ${index==pageVO.page?'currentpage':'' }">${index}</span></a>
 				</c:forEach>
-								
-				<c:set var="disabled" value="${pageVO.next?'':'disabled'}" />
-				<a href="/home/board/board_list?page=${pageVO.endPage+1}&search_type=${pageVO.search_type}" class="nextpage pbtn ${disabled}">
-				<img src="/resources/home/img/btn_nextpage.png" alt="다음 페이지로 이동">
-				</a>
+				
+				<c:set var="disabled" value="${pageVO.next?'':'disabled' }" />
+				<a href="href="/home/board/board_list?page="${pageVO.endPage+1}&search_type=${pageVO.search_type}" class="nextpage  pbtn ${disabled} }"><img src="/resources/home/img/btn_nextpage.png" alt="다음 페이지로 이동"></a>
+				<!-- <a href="javascript:;" class="lastpage  pbtn"><img src="img/btn_lastpage.png" alt="마지막 페이지로 이동"></a> -->
 			</div>
 			<!-- //페이징처리영역 -->
 			<p class="btn_line">
-			<!-- 등록버튼은 로그인한 사용자만 보이도록 -->
-			<c:if test="${session_enabled}">
-				<!-- 게시판이 공지사항일때는 관리자만 사용가능조건,공지사항외에는 로그인한 사용자는 글쓰기 기능 -->
-				<!-- 관리자일때, 일반사용자일때 1차조건, 2차조건 공지사항이 아닐때 -->
+			<!-- 등록버튼은 로그인한 사용자만 보이도록 처리 -->
+			<c:if test="${session_enabled }">
+				<!-- 게시판이 공지사항일때는 관리자만 글쓰기 가능하게 처리 -->
 				<c:choose>
-					<c:when test="${session_levels eq 'ROLE_ADMIN'}">
+					<c:when test="${session_levels eq 'ROLE_ADMIN' }">
 						<a href="/home/board/board_insert_form" class="btn_baseColor">등록</a>
 					</c:when>
 					<c:otherwise>
 						<c:if test="${session_board_type ne 'notice'}">
 							<a href="/home/board/board_insert_form" class="btn_baseColor">등록</a>
-						</c:if>	
+						</c:if>
 					</c:otherwise>
 				</c:choose>
-							
+				
 			</c:if>
 			</p>
 		</div>
 		<!-- //메인본문영역 -->
 	</div>
-    <!-- //메인콘텐츠영역 -->
-	
+	<!-- //메이콘텐츠영역 -->
 
 <%@ include file="../include/footer.jsp" %>

@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>타일즈템플릿사용</title>
+<meta charset="UTF-8">
+<title>타일즈 템플릿 사용</title>
 </head>
 <body>
 	<t:insertAttribute name="header" />

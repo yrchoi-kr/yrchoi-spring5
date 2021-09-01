@@ -3,15 +3,16 @@ package com.edu.vo;
 import java.util.Date;
 
 /**
- * 이 클래스는 첨부파일 입출력에 사용될 멤버변수를 생성하는 클래스
- * @author 라건국
+ * 첨부파일 멤버변수 클래스
+ * @author 은비
  *
  */
 public class AttachVO {
-	private String save_file_name;//UUID클래스(고유해시데이터를 생성하는 클래스) 로 생성예정, 실제 저장된 파일명으로 사용
-	private String real_file_name;//화면에 보이는 파일명.
-	private Date reg_date;//첨부파일 저장 일시
-	private Integer bno;//외래키 FK-게시물 번호
+	private String save_file_name; // UUID클래스(해시데이터를 생성하는 클래스)
+	private String real_file_name; // UI상으로 보이는 파일명
+	private Date reg_date; // 첨부파일 저장일시
+	private Integer bno; // 외래키- 게시물 번호
+	
 	
 	public String getSave_file_name() {
 		return save_file_name;
@@ -37,4 +38,6 @@ public class AttachVO {
 	public void setBno(Integer bno) {
 		this.bno = bno;
 	}
+	
+	
 }

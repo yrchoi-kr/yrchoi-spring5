@@ -3,9 +3,8 @@ package kr.or.test;
 public class HelloWorld {
 
 	public static void main(String[] args) {
-		// 자바맵은 진입 메서드가 필수 입니다..
-		System.out.println("헬로 자바");
-
+		// main 자바프로그램의 진입 메서드(자동실행) 입니다.
+		System.out.println("헬로 자바???? !!!!");
 	}
 
 }

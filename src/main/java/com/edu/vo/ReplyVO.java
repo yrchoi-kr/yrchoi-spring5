@@ -3,17 +3,19 @@ package com.edu.vo;
 import java.util.Date;
 
 /**
- * 이 클래스는 댓글 입출력 처리시 임시저장에 사용되는 변수와 메서드를 포함합니다.
- * @author 라건국
- *
+ * 댓글 입출력 처리시 임시저장에 사용되는 변수와 메서드를 포함.
+ * @author 은비
  */
+
 public class ReplyVO {
-	Integer rno;//자동증가 고유번호
+	Integer rno;
 	String reply_text;
 	String replyer;
 	Date reg_date;
 	Date update_date;
 	Integer bno;
+	
+	
 	public Integer getRno() {
 		return rno;
 	}
@@ -50,4 +52,6 @@ public class ReplyVO {
 	public void setBno(Integer bno) {
 		this.bno = bno;
 	}
+	
+	
 }
